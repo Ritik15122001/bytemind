@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-card: #ffffff;
+  --border: #e2e8f0;
+  --accent-purple: #7c3aed;
+  --accent-cyan: #0891b2;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.15);
+  color: #0f172a;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+
+@layer components {
+  .glass-card {
+    @apply bg-bg-card border border-bg-border rounded-xl shadow-card;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent-purple to-accent-cyan bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply bg-accent-purple hover:bg-accent-purple-light text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-purple active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply border border-bg-border hover:border-accent-purple text-text-secondary hover:text-text-primary font-medium px-6 py-3 rounded-lg transition-all duration-200 bg-white hover:bg-bg-secondary;
+  }
+}
+
+/* Blog content */
+.blog-content { @apply text-text-secondary leading-relaxed; }
+.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 { @apply text-text-primary font-bold mt-8 mb-4; }
+.blog-content h2 { @apply text-2xl border-b border-bg-border pb-2; }
+.blog-content h3 { @apply text-xl; }
+.blog-content p { @apply mb-4 text-base leading-7; }
+.blog-content ul, .blog-content ol { @apply mb-4 pl-6 space-y-2; }
+.blog-content ul { @apply list-disc; }
+.blog-content ol { @apply list-decimal; }
+.blog-content li { @apply text-text-secondary; }
+.blog-content a { @apply text-accent-purple hover:underline; }
+.blog-content blockquote { @apply border-l-4 border-accent-purple pl-4 italic text-text-muted my-6 bg-bg-secondary py-2 pr-4 rounded-r-lg; }
+.blog-content code { @apply font-mono text-sm bg-bg-secondary px-2 py-0.5 rounded text-accent-purple border border-bg-border; }
+.blog-content pre { @apply bg-slate-900 rounded-xl p-6 overflow-x-auto my-6 border border-bg-border; }
+.blog-content pre code { @apply bg-transparent p-0 text-slate-200 border-0; }
+.blog-content strong { @apply text-text-primary font-semibold; }
+.blog-content img { @apply rounded-xl my-6 w-full shadow-card; }
+.blog-content hr { @apply border-bg-border my-8; }
+.blog-content table { @apply w-full border-collapse my-6 text-sm; }
+.blog-content th, .blog-content td { @apply border border-bg-border px-4 py-2 text-left; }
+.blog-content th { @apply bg-bg-secondary text-text-primary font-semibold; }
