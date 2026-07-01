@@ -129,5 +129,5 @@ export const humanizeBlogContent = async (
   // Fallback: 8b model writes fresh from title (compact prompt fits within 6k TPM)
   const result = await rewriteWith8b(title, author);
   if (!result?.content) throw new Error("8b model returned empty content");
-  return result;
+  return result as { title: string; content: string; excerpt: string };
 };
