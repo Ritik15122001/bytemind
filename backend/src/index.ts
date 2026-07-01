@@ -52,13 +52,17 @@ const seedDatabase = async () => {
 
 const PORT = process.env.PORT || 5000;
 
+// Start HTTP server immediately so Render health check passes, then connect DB
+app.listen(PORT, () => {
+  console.log(`🚀 ByteMind API running on port ${PORT}`);
+});
+
 const start = async () => {
   await connectDB();
   await seedDatabase();
   startScheduler();
-  app.listen(PORT, () => {
-    console.log(`🚀 ByteMind API running on http://localhost:${PORT}`);
-  });
 };
 
-start().catch(console.error);
+start().catch((err) => {
+  console.error("Startup error:", err.message);
+});
